@@ -1,0 +1,8 @@
+
+<form action="/search/" method="post">
+    {% csrf_token %}
+    
+    <label for="summoner_name">Your Summoner Name: </label>
+    <input id="search" type="text" name="search" value="{{ current_name }}">
+    <input type="submit" value="OK">
+</form>
