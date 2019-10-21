@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from searchpage.views import search
+from single_game.views import analyze
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', search),
+    path('analyze/', analyze),
 ]
