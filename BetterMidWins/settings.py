@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'searchpage',
     'single_game',
+    'summ_overview',
 ]
 
 MIDDLEWARE = [
