@@ -8,10 +8,10 @@ import random
 # Create your views here.
 def analyze(request):
     context = dict()
-    
+    S
     context['summ_name'] = request.GET['summ_name']
     summoner = cass.get_summoner(name = context['summ_name'])
-    print(summoner.profile_icon.url)
+    print(summoner.rank_last_season)
     #random_champ = random.choice(champions)
     return render(request, 'summ_overview/main_overview.html', context=context)
     #return HttpResponse(request.GET['summ_name'] + " plays " + random_champ.name)
