@@ -2,32 +2,39 @@ from django.shortcuts import render, HttpResponse
 
 import cassiopeia as cass
 import random
-from cassiopeia import Queue
+from cassiopeia import Queue,Season
 
-#champions = cass.get_champions()
-
+#cass.get_champions()
 # Create your views here.
 def analyze(request):
     context = dict()
-    context['summ_name'] = request.GET['summ_name']
-    summoner = cass.Summoner(name = context['summ_name'])
-    #print(summoner.rank_last_season)
+    inputname = request.GET['summ_name']
+    summoner = cass.Summoner(name = inputname)    
     
-    print(summoner)
-    print(summoner.match_history)
     solo_rank = summoner.ranks[Queue.ranked_solo_fives]
     context['tier'] = solo_rank.tier
     context['division'] = solo_rank.division
     
-    print(summoner.league_entries.fives.league.entries[1].league_points)
-    
-    #context['wins'] = solo_rank.wins
-    #context['losses'] = solo_rank.losses
-    
-    
-    
+    for entry in summoner.league_entries.fives.league.entries:
+        if entry.summoner.name.lower() == inputname.lower():
+            context['summ_name'] = entry.summoner.name
+            context['wins'] = entry.wins
+            context['losses'] = entry.losses
+            #WL = (W/W+L) * 100 for %
+            context['win_loss'] = round(context['wins'] / (context['wins'] + context['losses']) * 100, 2)
         
+    match_history = summoner.match_history(queues={Queue.ranked_solo_fives}, seasons={Season.season_9}, end_index=3)
     
-    #random_champ = random.choice(champions)
+
+    
+    
+    
+    
+            
+    context['matches'] = list()
+    for i in range(3):
+        context['matches'].append(match_history[i])
+
+
+        
     return render(request, 'summ_overview/main_overview.html', context=context)
-    #return HttpResponse(request.GET['summ_name'] + " plays " + random_champ.name)

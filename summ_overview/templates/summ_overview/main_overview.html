@@ -1,1 +1,48 @@
-{{tier}} {{division}}
+<h1><b>{{summ_name}}</b> is {{tier}} {{division}}   <br> </h1>
+
+Wins: {{wins}} 
+Losses: {{losses}} 
+Win Loss ratio: {{win_loss}}% 
+<br>
+<h2> Most Recent Game Stats </h2>
+
+{% for match in matches %}
+{# BLUE TEAM DISPLAY #}
+    <h4>Blue Side:<br>
+    {% if match.blue_team.win %}
+    Won
+    {% else %}
+    Lost
+    {% endif %}
+    </h4>
+    {% for p in match.blue_team.participants %}
+        {% if p.summoner.name == summ_name %}
+            
+            <b>{{summ_name}}: {{p.champion.name}} {{p.stats.kills}}/{{p.stats.deaths}}/{{p.stats.assists}}</b>
+            
+        {% else %}
+            {{p.summoner.name}}: {{p.champion.name}} {{p.stats.kills}}/{{p.stats.deaths}}/{{p.stats.assists}}
+        {% endif %}
+        
+    <br>
+    {% endfor %}
+{# RED TEAM DISPLAY #}
+    <h4>Red Side:<br>
+    {% if match.red_team.win %}
+    Won
+    {% else %}
+    Lost
+    {% endif %}
+    </h4>
+    {% for p in match.red_team.participants %}
+        {% if p.summoner.name == summ_name %}
+            <b>{{summ_name}}: {{p.champion.name}} {{p.stats.kills}}/{{p.stats.deaths}}/{{p.stats.assists}}</b>
+            
+        {% else %}
+            {{p.summoner.name}}: {{p.champion.name}} {{p.stats.kills}}/{{p.stats.deaths}}/{{p.stats.assists}}
+        {% endif %}
+    <br>
+    {% endfor %}
+    --------------------------------------------------------------
+{% endfor %}
+            
