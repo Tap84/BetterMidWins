@@ -31,9 +31,9 @@ def analyze(request):
     
     
             
-    context['matches'] = list()
+    context['3matches'] = list()
     for i in range(3):
-        context['matches'].append(match_history[i])
+        context['3matches'].append(match_history[i])
 
 
         
