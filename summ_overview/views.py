@@ -3,8 +3,8 @@ from django.shortcuts import render, HttpResponse
 import cassiopeia as cass
 import random
 from cassiopeia import Queue,Season
-
-#cass.get_champions()
+#just to load in champions without having to load on request as it takes a long time
+champsdummy = cass.get_champions()[0].name
 # Create your views here.
 def analyze(request):
     context = dict()
