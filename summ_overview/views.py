@@ -11,9 +11,16 @@ for champ in champsdummy:
 def analyze(request):
     context = dict()
     inputname = request.GET['summ_name']
-    summoner = cass.Summoner(name = inputname)    
+    summoner = cass.Summoner(name = inputname)  
+    try:
+        summoner.id
+    except:
+        return HttpResponse("Summoner doesnt exist")  
     
-    solo_rank = summoner.ranks[Queue.ranked_solo_fives]
+    try:
+        solo_rank = summoner.ranks[Queue.ranked_solo_fives]
+    except:
+        return HttpResponse("Summoner has no ranked solo 5v5 games")
     context['tier'] = solo_rank.tier
     context['division'] = solo_rank.division
     
