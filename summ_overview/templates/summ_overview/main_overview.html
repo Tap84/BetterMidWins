@@ -3,12 +3,14 @@
 Wins: {{wins}} 
 Losses: {{losses}} 
 Win Loss ratio: {{win_loss}}% 
+<input type="submit" value = "View Champion Statistics" />
 <br>
 <h2> Most Recent Game Stats </h2>
 
 {% for match in 3matches %}
+<input type="submit" value = "Analyze" name = "Analyze" />
 {# BLUE TEAM DISPLAY #}
-    <h4>Blue Side:<br>
+    <h4>Blue Side: 
     {% if match.blue_team.win %}
     Won
     {% else %}
@@ -27,7 +29,7 @@ Win Loss ratio: {{win_loss}}%
     <br>
     {% endfor %}
 {# RED TEAM DISPLAY #}
-    <h4>Red Side:<br>
+    <h4>Red Side: 
     {% if match.red_team.win %}
     Won
     {% else %}
@@ -43,6 +45,6 @@ Win Loss ratio: {{win_loss}}%
         {% endif %}
     <br>
     {% endfor %}
-    --------------------------------------------------------------
+    --------------------------------------------------------------<br>
 {% endfor %}
             

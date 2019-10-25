@@ -4,7 +4,9 @@ import cassiopeia as cass
 import random
 from cassiopeia import Queue,Season
 #just to load in champions without having to load on request as it takes a long time
-champsdummy = cass.get_champions()[0].name
+champsdummy = cass.get_champions()
+for champ in champsdummy:
+    champ.name
 # Create your views here.
 def analyze(request):
     context = dict()
@@ -34,6 +36,7 @@ def analyze(request):
     context['3matches'] = list()
     for i in range(3):
         context['3matches'].append(match_history[i])
+        
 
 
         
