@@ -4,11 +4,14 @@ import cassiopeia as cass
 import random
 from cassiopeia import Queue,Season
 #just to load in champions without having to load on request as it takes a long time
-champsdummy = cass.get_champions()
-for champ in champsdummy:
-    champ.name
+#champsdummy = cass.get_champions()
+#for champ in champsdummy:
+    #champ.name
 # Create your views here.
 def analyze(request):
+    with open('apikey.txt') as f:
+        cass.set_riot_api_key(f.read().strip())
+    cass.set_default_region("NA")
     context = dict()
     inputname = request.GET['summ_name']
     summoner = cass.Summoner(name = inputname)  

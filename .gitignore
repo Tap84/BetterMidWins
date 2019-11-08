@@ -1,8 +1,10 @@
 db.sqlite3
 secretkey.txt
 apikey.txt
-.vscode
+.vscode/
+.vscode (1)/
 
-.vscode/settings.json
-.vscode (1)/settings.json
-
+.coverage
+htmlcov/
+migrations/
+__pycache__/
