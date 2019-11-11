@@ -5,7 +5,6 @@ import cassiopeia as cass
 
 # Create your tests here.
 class AnalyzeCases(TestCase):
-    
     def test_empty(self):
         self.factory = RequestFactory()
         request = self.factory.get("/analyze/?summ_name=")
@@ -30,6 +29,5 @@ class AnalyzeCases(TestCase):
     def test_has_games(self):
         self.factory = RequestFactory()
         request = self.factory.get("/analyze/?summ_name=tyìer")
-        response = analyze(request)
-        
+        analyze(request)
         
