@@ -4,12 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pylint = "*"
 
 [packages]
 django = "*"
 coverage = "*"
-cassiopeia = {git = "https://github.com/meraki-analytics/cassiopeia.git"}
+requests = "*"
+roleml = "*"
+cassiopeia = {git = "https://github.com/meraki-analytics/cassiopeia"}
 
 [requires]
 python_version = "3.7"
