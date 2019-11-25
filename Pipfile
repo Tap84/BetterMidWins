@@ -6,11 +6,10 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+cassiopeia = "*"
 django = "*"
-coverage = "*"
-requests = "*"
 roleml = "*"
-cassiopeia = {git = "https://github.com/meraki-analytics/cassiopeia"}
+coverage = "*"
 
 [requires]
 python_version = "3.7"

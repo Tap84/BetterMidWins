@@ -1,0 +1,29 @@
+User cs and cs%:{{u_cs}} {{u_cs_per}} <br>
+Opp cs and cs%:{{o_cs}} {{o_cs_per}} <br> 
+
+User dmg and dmg%: {{u_dmg}} {{u_dmg_per}} <br>
+Opp dmg and dmg%: {{o_dmg}} {{o_dmg_per}} <br>
+
+User obj dmg:{{u_obj_dmg}} {{u_obj_dmg_per}} <br>
+Opp obj dmg:{{o_obj_dmg}} {{o_obj_dmg_per}} <br>
+
+User kda:{{u_kda}} <br>
+Opp kda:{{o_kda}} <br>
+
+User KP: {{u_kp}} <br>
+Opp KP: {{o_kp}} <br>
+
+User Vision Score: {{u_vision}} <br>
+Opp Vision Score: {{o_vision}} <br>
+
+User Control Wards: {{u_control_wards}} <br>
+Opp Control Wards: {{o_control_wards}} <br>
+
+<h1> Strengths:</h1>
+{% for strength in strengths %}
+{{strength}} <br>
+{% endfor %}
+<h1> Weaknesses:</h1>
+{% for weakness in weaknesses %}
+{{weakness}} <br>
+{% endfor %}

@@ -35,7 +35,7 @@ def analyze(request):
             #WL = (W/W+L) * 100 for %
             context['win_loss'] = round(context['wins'] / (context['wins'] + context['losses']) * 100, 2)
         
-    match_history = summoner.match_history(queues={Queue.ranked_solo_fives}, seasons={Season.season_9}, end_index=3)
+    match_history = summoner.match_history(queues={Queue.ranked_solo_fives},  end_index=3)
    
     context['3matches'] = list()
     for i in range(3):
