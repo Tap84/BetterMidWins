@@ -116,23 +116,58 @@ def single_game(request):
     #CS Info
     if (context['o_cs'] - context['u_cs']) > 40:
         context['weaknesses'].append(f"Your CS is significantly lower than your opponent(You: {context['u_cs']}, Opponent: {context['o_cs']}), consider practicing your CSing, or spend more time farming and less time fighting.")
-    elif (context['o_cs'] - context['u_cs']) < -40:
+    if (context['o_cs'] - context['u_cs']) < -40:
         context['strengths'].append(f"Your CS is significantly higher than your opponent(You: {context['u_cs']}, Opponent: {context['o_cs']}), you may be able to sacrifice some CS in order to push your advantage, or keep up the farming if you prefer a lategame match.")
     
     if (context['o_cs_per'] - context['u_cs_per']) > .05:
         context['weaknesses'].append(f"Your CS percent of your team is significantly lower than your opponent(You: {context['u_cs_per']}, Opponent: {context['o_cs_per']}). If you were playing a strong scaling champion, you should aim to increase this number in order to enable yourself to carry the game.")
-    elif (context['o_cs_per'] - context['u_cs_per']) < -.05:
+    if (context['o_cs_per'] - context['u_cs_per']) < -.05:
         context['strengths'].append(f"Your CS percent of your team is significantly higher than your opponent(You: {context['u_cs_per']}, Opponent: {context['o_cs_per']}). You should be able to carry games more often if you continue this trend.")
     
     #DMG Info
     if (context['o_dmg'] - context['u_dmg']) > 15000:
         context['weaknesses'].append(f"Your Damage to Champions is significantly lower than your opponent(You: {context['u_dmg']}, Opponent: {context['o_dmg']}), ignore this if one of you is a poke champion and the other isnt, if you can increase this number you will be more effective in teamfights.")
-    elif (context['o_dmg'] - context['u_dmg']) < -15000:
+    if (context['o_dmg'] - context['u_dmg']) < -15000:
         context['strengths'].append(f"Your Damage to Champions is significantly higher than your opponent(You: {context['u_dmg']}, Opponent: {context['o_dmg']}), ignore this if you are a poke champion and your opponent isnt, this means you are generally more effective at outputting damage than your opponent.")
     
     if (context['o_dmg_per'] - context['u_dmg_per']) > .10:
         context['weaknesses'].append(f"Your Damage percent of your team is significantly lower than your opponent(You: {context['u_dmg_per']}, Opponent: {context['o_dmg_per']}). If you can increase this number, it means you will will be the weak link in damage output on your team more often.")
-    elif (context['o_dmg_per'] - context['u_dmg_per']) < -.10:
+    if (context['o_dmg_per'] - context['u_dmg_per']) < -.10:
         context['strengths'].append(f"Your Damage percent of your team is significantly higher than your opponent(You: {context['u_dmg_per']}, Opponent: {context['o_dmg_per']}). You should be able to carry games more often if you continue this trend.")
+    
+    #OBJ Info
+    if (context['o_obj_dmg'] - context['u_obj_dmg']) > 5000:
+        context['weaknesses'].append(f"Your Objective Damage is significantly lower than your opponent(You: {context['u_obj_dmg']}, Opponent: {context['o_obj_dmg']}), try to play more objective focused.")
+    if (context['o_obj_dmg'] - context['u_obj_dmg']) < -5000:
+        context['strengths'].append(f"Your Objective Damage is significantly higher than your opponent(You: {context['u_obj_dmg']}, Opponent: {context['o_obj_dmg']}), continue this trend, as you are being more effective in macro play.")
+    
+    if (context['o_obj_dmg_per'] - context['u_obj_dmg_per']) > .10:
+        context['weaknesses'].append(f"Your Objective Damage percent of your team is significantly lower than your opponent(You: {context['u_obj_dmg_per']}, Opponent: {context['o_obj_dmg_per']}). If you can increase this number, it means you will will be the weak link in objective damage output on your team more often.")
+    if (context['o_obj_dmg_per'] - context['u_obj_dmg_per']) < -.10:
+        context['strengths'].append(f"Your Objective Damage percent of your team is significantly higher than your opponent(You: {context['u_obj_dmg_per']}, Opponent: {context['o_obj_dmg_per']}). You should be able to carry games more often if you continue this trend.")
+    
+    #KDA Info
+    if (context['o_kda'] - context['u_kda']) > 1:
+        context['weaknesses'].append(f"Your KDA is significantly lower than your opponent, try to cut out deaths that are avoidable if possible, you are giving the opponent more gold than they gave you.")
+    if (context['o_kda'] - context['u_kda']) < -1:
+        context['strengths'].append(f"Your KDA is significantly higher than your opponent, push this advantage as you are giving your opponent less gold than they give you, so you will be overall more effective than them.")
+
+    #KP Info
+    if (context['o_kp'] - context['u_kp']) > .10:
+        context['weaknesses'].append(f"Your KP is significantly lower than your opponent, try to play a more team oriented game or you will be overshadowed.")
+    if (context['o_kp'] - context['u_kp']) < -.10:
+        context['strengths'].append(f"Your KP is significantly higher than your opponent, this means you are more effective in a team environment and should climb.")
+    
+    #Vision
+    if (context['o_vision'] - context['u_vision']) > 10:
+        context['weaknessess'].append(f'Your vision score is significantly lower than opponent, you should more effectively use your trinket and control wards.')
+    if (context['o_vision'] - context['u_vision']) < -10:
+        context['strengths'].append(f'Your vision score is significantly higher than your opponent, you have more effective vision control and should try to continue this.')
+    
+    if (context['o_control_wards'] - context['u_control_wards'] > 2):
+        context['weaknessess'].append(f'Your number of control wards is significantly lower than opponent, you should buy and use more control wards to help your team with vision control.')
+    if (context['o_control_wards'] - context['u_control_wards'] < -2):
+        context['strengths'].append(f'Your number of control wards is significantly higher than opponent, you are being more effective in vision control through vision wards, keep this trend up and you will most likely climb.')
+    
     
     return render(request, 'single_game/single_game.html', context=context)
