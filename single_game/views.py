@@ -142,7 +142,7 @@ def single_game(request):
         context['strengths'].append(f"Your Objective Damage is significantly higher than your opponent(You: {context['u_obj_dmg']}, Opponent: {context['o_obj_dmg']}), continue this trend, as you are being more effective in macro play.")
     
     if (context['o_obj_dmg_per'] - context['u_obj_dmg_per']) > .10:
-        context['weaknesses'].append(f"Your Objective Damage percent of your team is significantly lower than your opponent(You: {context['u_obj_dmg_per']}, Opponent: {context['o_obj_dmg_per']}). If you can increase this number, it means you will will be the weak link in objective damage output on your team more often.")
+        context['weaknesses'].append(f"Your Objective Damage percent of your team is significantly lower than your opponent(You: {context['u_obj_dmg_per']}, Opponent: {context['o_obj_dmg_per']}). If you can increase this number, it means you will will be the weak link in objective damage output on your team less often.")
     if (context['o_obj_dmg_per'] - context['u_obj_dmg_per']) < -.10:
         context['strengths'].append(f"Your Objective Damage percent of your team is significantly higher than your opponent(You: {context['u_obj_dmg_per']}, Opponent: {context['o_obj_dmg_per']}). You should be able to carry games more often if you continue this trend.")
     
@@ -160,12 +160,12 @@ def single_game(request):
     
     #Vision
     if (context['o_vision'] - context['u_vision']) > 10:
-        context['weaknessess'].append(f'Your vision score is significantly lower than opponent, you should more effectively use your trinket and control wards.')
+        context['weaknesses'].append(f'Your vision score is significantly lower than opponent, you should more effectively use your trinket and control wards.')
     if (context['o_vision'] - context['u_vision']) < -10:
         context['strengths'].append(f'Your vision score is significantly higher than your opponent, you have more effective vision control and should try to continue this.')
     
     if (context['o_control_wards'] - context['u_control_wards'] > 2):
-        context['weaknessess'].append(f'Your number of control wards is significantly lower than opponent, you should buy and use more control wards to help your team with vision control.')
+        context['weaknesses'].append(f'Your number of control wards is significantly lower than opponent, you should buy and use more control wards to help your team with vision control.')
     if (context['o_control_wards'] - context['u_control_wards'] < -2):
         context['strengths'].append(f'Your number of control wards is significantly higher than opponent, you are being more effective in vision control through vision wards, keep this trend up and you will most likely climb.')
     

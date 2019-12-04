@@ -7,18 +7,20 @@ Losses: {{losses}}
 Win Loss ratio: {{win_loss}}% 
 </div>
 <br>
+<div class='container'>
 <h2 align='center'> Most Recent Game Stats </h2><br>
 
 {% for match in 5matches %}
-<div class='row'>
+<div class='row bg-light'>
 <form action="/single/" method="GET">
     <input id="summ_name" type="hidden" name="summ_name" value="{{summ_name}}">
     <input id="match_id" type="hidden" name="match_id" value="{{match.id}}">
-    <div class='col-auto'><input type="submit" value="Analyze"></div>
+    <input class='btn-primary align-center' type="submit" value="Analyze">
     
 </form>
 
 {# BLUE TEAM DISPLAY #}
+
 <div class='col-sm'>
     <h4>Blue Side: 
     {% if match.blue_team.win %}
@@ -63,4 +65,4 @@ Win Loss ratio: {{win_loss}}%
 </div>
 <br>
 {% endfor %}
-            
+</div>
